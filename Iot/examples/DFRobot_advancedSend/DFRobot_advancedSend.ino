@@ -15,12 +15,11 @@
 * version :  V1.0
 * date    :  2017-03-06
 **********************************************************************/
- 
+#include <Arduino.h>
 #include <SoftwareSerial.h>
 #include "Iot.h"
 
-void * eventCb(uint8_t type, const char *data, uint16_t len);
-Iot iot(eventCb);                          //当物联网既需要接收数据有需要发送数据的时候，需要传入回调函数
+Iot iot;   
 
 SoftwareSerial mySerial(10, 11);         // RX, TX
 
@@ -38,11 +37,6 @@ int  buttonPin = 2;
 bool currentState = false;
 unsigned long currentTime = 0;
 bool sendFlag  = true;
-
-//连接状态回调函数
-void * eventCb(uint8_t eventType, const char *data, uint16_t len)
-{
-}
 
 void setup(void)
 {
